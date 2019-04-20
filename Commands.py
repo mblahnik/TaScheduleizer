@@ -358,10 +358,23 @@ def getPrivateDataList():
     return directory
 
 
-def editPubInfo(userName, dict):
-    user = Account.objects.get(userName=userName)
-    user.firstName = dict["firstname"]
-
+def editPubInfo(user, dict):
+    user.firstName = dict['firstName']
+    user.lastName = dict['lastName']
+    user.email = dict['email']
+    user.password = dict['password']
+    user.homePhone = dict['homephone']
+    user.address = dict['address']
+    user.city = dict['city']
+    user.state = dict['state']
+    user.zipCode = dict['zipcode']
+    user.officeNumber = dict['officenumber']
+    user.officePhone = dict['officephone']
+    user.officeDays = dict['officedays']
+    user.officeHoursStart = dict['officestart']
+    user.officeHoursEnd = dict['officeend']
+    user.save()
+    return "Fields successfully updated"
 
 
 def getCommands():

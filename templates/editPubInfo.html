@@ -9,13 +9,27 @@
 
 </head>
 <body>
+<form method="post" action="/editpubinfo/">
+  {%csrf_token%}
 
-    {% for key, value in dict.items %}
-        {{ key }} : <input type="text" id="{{ key }}" value="{{value}}"><br>
-    {% endfor %}
+     <p>First Name: <input type="text" name="firstname" id = "firstname" value="{{i.firstName }}"></p>
+     <p>Last Name: <input type="text" name="lastname" id="lastname"  value="{{ i.lastName }}"></p>
+     <p>Email: <input type="text" name="email" id="email" value="{{ i.email }}"></p>
+     <p>Password: <input type="text" name="password" id="password" value="{{ i.password }}"></p>
+     <p>Home Phone: <input type="text" name="homephone" id="homephone" value="{{ i.homePhone }}"></p>
+     <p>Address: <input type="text" name="address" id="address" value="{{ i.address }}"></p>
+     <p>City: <input type="text" name="city" id="city" value="{{ i.city }}"></p>
+     <p>State: <input type="text" name="state" id="state" value="{{ i.state }}"></p>
+     <p>ZipCode: <input type="text" name="zipcode" id="zipcode" value="{{ i.zipCode }}"></p>
+     <p>Office Number: <input type="text" name="officenumber" id="officenumber" value="{{ i.officeNumber }}"></p>
+     <p>Office Phone: <input type="text" name="officephone" id="officephone" value="{{ i.officePhone }}"></p>
+     <p>Office Days: <input type="text" name="officedays" id="officedays" value="{{ i.officeDays }}"></p>
+     <p>Office Hours Start Time: <input type="text" name="officestart" id="officestart" value="{{ i.officeHoursStart }}"></p>
+     <p>Office Hours End Time: <input type="text" name="officeend" id="officeend" value="{{ i.officeHoursEnd }}"></p>
 
     <input type="submit"/><br>
     <p>{{ message }}</p>
 
+</form>
 </body>
 </html>
