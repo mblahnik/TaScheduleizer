@@ -193,16 +193,26 @@ class editPubInfoView(View):
     def get(self, request):
         CU = CurrentUser()
         user = CU.getCurrentUser(request)
-        dict = {'firstname':user.firstName, 'lastname':user.lastName, 'password':user.password}
-
-        return render(request, 'editPubInfo.html', {"dict": dict})
-
+        return render(request, 'editPubInfo.html', {'i': user})
 
     def post(self, request):
-        dict = {'firstname': str(request.POST["firstname"])}
+        dict = {
+            'firstName': str(request.POST.get("firstname")),
+            'lastName': str(request.POST.get('lastname')),
+            'email': str(request.POST.get('email')),
+            'password': str(request.POST.get('password')),
+            'homephone': str(request.POST.get("homephone")),
+            'address': str(request.POST.get('address')),
+            'city': str(request.POST.get('city')),
+            'state': str(request.POST.get('state')),
+            'zipcode': str(request.POST.get('zipcode')),
+            'officenumber': str(request.POST.get('officenumber')),
+            'officephone': str(request.POST.get('officephone')),
+            'officedays': str(request.POST.get('officedays')),
+            'officestart': str(request.POST.get('officestart')),
+            'officeend': str(request.POST.get('officeend'))}
         CU = CurrentUser()
         user = CU.getCurrentUser(request)
-        name = user.userName
-        message = editPubInfo(name, dict)
+        message = editPubInfo(user, dict)
         return render(request, 'editPubInfo.html', {"message": message})
 
