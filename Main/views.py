@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from UserInterface import UI
-from Commands import login, displayAllCourseAssign, createAccount, getPrivateDataList, getPublicDataList
+from Commands import login, displayAllCourseAssign, createAccount, getPrivateDataList, getPublicDataList, editPubInfo
 from CurrentUserHelper import CurrentUser
 from Main.models import Account
 # Create your views here.
@@ -191,7 +191,18 @@ class directoryView(View):
 class editPubInfoView(View):
 
     def get(self, request):
-        pass
+        CU = CurrentUser()
+        user = CU.getCurrentUser(request)
+        dict = {'firstname':user.firstName, 'lastname':user.lastName, 'password':user.password}
+
+        return render(request, 'editPubInfo.html', {"dict": dict})
+
 
     def post(self, request):
-        pass
+        dict = {'firstname': str(request.POST["firstname"])}
+        CU = CurrentUser()
+        user = CU.getCurrentUser(request)
+        name = user.userName
+        message = editPubInfo(name, dict)
+        return render(request, 'editPubInfo.html', {"message": message})
+

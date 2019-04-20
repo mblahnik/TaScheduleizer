@@ -357,6 +357,13 @@ def getPrivateDataList():
     directory.sort()
     return directory
 
+
+def editPubInfo(userName, dict):
+    user = Account.objects.get(userName=userName)
+    user.firstName = dict["firstname"]
+
+
+
 def getCommands():
     return [Command("login", 2, login), Command("logout", 0, logout),
             Command("createaccount", 5, createAccount), Command("deleteaccount", 1, deleteAccount),
