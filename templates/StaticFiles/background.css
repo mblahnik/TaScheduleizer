@@ -49,6 +49,19 @@ table {
     animation: zoomLeft 3s;
 }
 
+.zoomU{
+    animation: zoomUp 1.5s;
+}
+
+@keyframes zoomUp {
+     0% {
+        transform: translate(1000%,4000%)
+    }
+    100% {
+        transform: translate(0%, 0)
+    }
+}
+
 @keyframes zoomLeft {
     0% {
         transform: translate(-1000%, 0)

@@ -1,6 +1,7 @@
 from django.test import TestCase
 from UserInterface import UI
-from Main.models import Account, Course, Section, AccountCourse, AccountSection
+from Main.models import Account, Course, Section
+from AccountCourse.models import AccountCourse
 
 
 class TestUI(TestCase):

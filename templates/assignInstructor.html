@@ -9,18 +9,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'background.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <form method="post" action="/assigninstructor/">
+    <form method="post" action="/assigninstructor/" class="zoomU">
         {% csrf_token %}
 
         <div class="box">
 
-            <select name="username">
+            <select name="username" class="zoomL">
                 {% for i  in instList %}
                     <option value="{{ i.userName }}">{{ i }}</option>
                 {% endfor %}
             </select>
             <div class="box">
-                <select name="course">
+                <select name="course" class="zoomR">
                     {% for i  in courseList %}
                         <option value="{{ i.name }}">{{ i }}</option>
                     {% endfor %}
