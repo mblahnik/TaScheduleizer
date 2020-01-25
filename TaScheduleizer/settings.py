@@ -127,6 +127,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'templates/StaticFiles')
 
 #STATICFILES_DIRS = (
 #    os.path.join(BASE_DIR, 'templates/StaticFiles'),
-#)
+#) d
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LdkVqEUAAAAAIISSRY-4GLXbSA4kaXzdyF3TzNm'
