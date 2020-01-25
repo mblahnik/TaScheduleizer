@@ -23,6 +23,16 @@ table {
 
 }
 
+.deleteCourse
+{
+    animation: DC 2s;
+}
+@keyframes DC
+{
+     0% {transform: translate(-1000%, -1000%);}
+    100% {transform: translate(0%, 0);}
+}
+
 .spin {
     animation: spinningText 4s;
 }

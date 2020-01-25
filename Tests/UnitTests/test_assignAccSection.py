@@ -1,6 +1,7 @@
 from django.test import TestCase
-from Main.models import Account, Course, AccountCourse, Section, AccountSection
+from Main.models import Account, Course, Section, AccountSection
 from Commands import assignAccCourse, assignAccSection
+from AccountCourse.models import AccountCourse
 
 class TestAssignAccSection(TestCase):
     def setUp(self):
