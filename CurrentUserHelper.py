@@ -5,6 +5,7 @@ class CurrentUser:
 
     def setCurrentUser(self, account, request):
         request.session["currentUser"] = account.userName
+        request.session["title"] = account.title
 
     def removeCurrentUser(self, request):
         request.session["currentUser"] = 0
@@ -20,12 +21,13 @@ class CurrentUser:
 
     def getCurrentUserTitle(self, request):
 
-        currentUser = self.getCurrentUser(request)
+        return request.session["title"]
+       #currentUser = self.getCurrentUser(request)
 
-        if currentUser is 0:
-            return 0
-        else:
-            return currentUser.title
+        #if currentUser is 0:
+        #    return 0
+        #else:
+        #    return currentUser.title
 
     def getTemplate(self, request):
 
