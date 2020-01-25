@@ -43,7 +43,7 @@ class loginPage(View):
             currentUser = login(username, password)
             CU.setCurrentUser(currentUser, request)
 
-            check = CU.getCurrentUserTitle(request)
+            check = currentUser.title
 
             if check == 1:
                 return redirect('/ta/')
