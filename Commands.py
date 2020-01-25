@@ -21,6 +21,9 @@ def login(userName, password):
     except Account.DoesNotExist:
         raise Exception("Account Not Found")
 
+    from django import db
+    db.connections.close_all()
+
     return CurrentUser
 
 
@@ -90,6 +93,8 @@ def createAccount(firstName, lastName, userName, title, email):
         A.password = A.userName + "456"
         A.save()
 
+        from django import db
+        db.connections.close_all()
         return "Account successfully created.  Temporary password is: " + A.userName + "456"
 
 
@@ -100,6 +105,8 @@ def deleteAccountCom(userName):
     except Exception as e:
         return "Account does not exist"
     a.delete()
+    from django import db
+    db.connections.close_all()
     return "Account successfully deleted"
 
 
@@ -109,6 +116,8 @@ def deleteCourseCom(courseName):
     except Exception as e:
         return "Course does not exist"
     a.delete()
+    from django import db
+    db.connections.close_all()
     return "Course successfully deleted"
 
 
@@ -138,6 +147,8 @@ def createCourse(name, number, online):
         else:
             c.onCampus = True
         c.save()
+        from django import db
+        db.connections.close_all()
         return "Course successfully created"
 
 
@@ -198,6 +209,8 @@ def createSection(courseNumber, type, sectionNumber, days, start, end):
         l.startTime = 0000
         l.endTime = 0000
     l.save()
+    from django import db
+    db.connections.close_all()
     return "Section successfully created."
 
 
@@ -225,6 +238,8 @@ def assignAccCourse(userName, courseName):
     a.Account = instructor
     a.Course = course
     a.save()
+    from django import db
+    db.connections.close_all()
     return "User was successfully assigned to course"
 
 
@@ -264,7 +279,8 @@ def assignAccSection(userName, courseNumber, sectionNumber):
     p.Account = account
     p.Section = lab
     p.save()
-
+    from django import db
+    db.connections.close_all()
     return "User successfully assigned to course section"
 
 
@@ -274,7 +290,8 @@ def displayAllCourseAssign():
 
     for a in lst:
         courseList.append(displayCourseAssign(a.number))
-
+    from django import db
+    db.connections.close_all()
     return courseList
 
 
@@ -330,6 +347,8 @@ def displayCourseAssign(courseNumber):
                 for q in p:
                     response += str(q.Section) + ": " + str(q.Account) + "\n"
 
+    from django import db
+    db.connections.close_all()
     return response
 
 
@@ -366,6 +385,8 @@ def viewCourseAssign(userName):
 
     response += ", ".join(courseList)
 
+    from django import db
+    db.connections.close_all()
     return response
 
 
@@ -379,6 +400,8 @@ def getPublicDataList():
         directory.append(i.displayPublic())
 
     directory.sort()
+    from django import db
+    db.connections.close_all()
     return directory
 
 
@@ -392,6 +415,8 @@ def getPrivateDataList():
         directory.append(i.displayPrivate())
 
     directory.sort()
+    from django import db
+    db.connections.close_all()
     return directory
 
 
@@ -599,6 +624,8 @@ def editPubInfo(user, dict):
     if len(errorList) > 0:
         return "Errors: " + ", ".join(errorList)
     else:
+        from django import db
+        db.connections.close_all()
         return "Fields successfully updated"
 
 
