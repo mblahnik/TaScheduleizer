@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from Main import views
 from AccountCourse import views as AccCourseViews
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,4 +45,7 @@ urlpatterns = [
     path('contact/', views.contact.as_view()),
     path('deletecourse/', views.deleteCourseView.as_view()),
     path('test', views.testView.as_view())
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
